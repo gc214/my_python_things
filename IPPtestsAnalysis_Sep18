@@ -1,0 +1,102 @@
+import numpy as np
+from JEM_functions import medfilereader
+from JEM_functions import isnumeric
+
+metafile="R:\\DA_and_Reward\\gc214\\IPP1\\IPP1_metafile.txt"
+medfolder="R:\\DA_and_Reward\\gc214\\IPP1\\MED-PC datafile\\"
+
+def DataExtract (metafile):
+    f = open(metafile, 'r')
+    f.seek(0)
+    Rows = f.readlines()[1:]
+    
+    tablerows = []
+    for i in Rows:
+        tablerows.append(i.split('\t'))
+        
+        Medfile, Rat, Session, Diet, bottleL, bottleR, licksL, licksR, \
+        TotalLicks, IntakeL, IntakeR = [], [], [], [], [], [], [], [], [], [], []
+        
+    for i, list in enumerate(tablerows):
+        Medfile = Medfile + [list[0]]
+        Rat = Rat + [list[1]]
+        Session = Session + [list[2]]
+        Diet = Diet + [list[4]]
+        bottleL = bottleL + [list[6]]
+        bottleR = bottleR + [list[7]]
+        licksL = licksL + [list[8]]
+        licksR = licksR + [list[9]]
+        TotalLicks = TotalLicks + [list[10]]
+        IntakeL = IntakeL + [list[11]]
+        IntakeR = IntakeR + [list[12]]
+            
+    return ({'Medfile':Medfile, 'Rat':Rat, 'Session':Session, \
+             'Diet':Diet, 'bottleL':bottleL, 'bottleR':bottleR, 'licksL':licksL, \
+             'licksR':licksR, 'TotalLicks':TotalLicks, 'IntakeL':IntakeL, \
+             'IntakeR':IntakeR})
+    
+Data = DataExtract(metafile)
+
+Licks = []
+for Medfile in Data['Medfile']:
+    Licks.append(medfilereader(medfolder+Medfile,varsToExtract = ['b','e'], remove_var_header = True))
+
+#when it's conditioning, you just have the list TotalLicks
+LLicks = []
+for l in Licks:
+    LLicks.append(len(l[0]))
+RLicks = []
+for l in Licks:
+    RLicks.append(len(l[1]))
+    
+test1_C_NR = []
+test1_M_NR = []
+test1_C_PR = []
+test1_M_PR = []
+
+#test2_C_NR = []
+#test2_M_NR = []
+#test2_C_PR = []
+#test2_M_PR = []
+
+#test3_C_NR = []
+#test3_M_NR = []
+#test3_C_PR = []
+#test3_M_PR = []
+
+#test4_C_NR = []
+#test4_M_NR = []
+#test4_C_PR = []
+#test4_M_PR = []
+
+#test5_C_NR = []
+#test5_M_NR = []
+#test5_C_PR = []
+#test5_M_PR = []
+
+for rat in np.unique(Data['Rat']): #create a list of the rats in numerical order
+    for index, session in enumerate(Data['Session']): #index the position in the Session list
+        if session == 's4' :
+            if Data['Rat'][index] == rat:
+                if 'NR' in Data['Diet'][index]:
+                    if 'cas' in Data ['bottleL'][index]:
+                        test1_C_NR.append(LLicks[index])
+                    if 'cas' in Data ['bottleR'][index]:
+                        test1_C_NR.append(RLicks[index])
+                    if 'malto' in Data['bottleL'][index]:
+                        test1_M_NR.append(LLicks[index])
+                    if 'malto' in Data ['bottleR'][index]:
+                        test1_M_NR.append(RLicks[index])
+                if 'PR' in Data['Diet'][index]:
+                    if 'cas' in Data['bottleL'][index]:
+                        test1_C_PR.append(LLicks[index])
+                    if 'cas' in Data['bottleR'][index]:
+                        test1_C_PR.append(RLicks[index])
+                    if 'malto' in Data['bottleL'][index]:
+                        test1_M_PR.append(LLicks[index])
+                    if 'malto' in Data ['bottleR'][index]:
+                        test1_M_PR.append(RLicks[index])
+    
+                        
+
+
