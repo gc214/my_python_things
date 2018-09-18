@@ -1,6 +1,6 @@
 import numpy as np
 from JEM_functions import medfilereader
-from JEM_functions import isnumeric
+#from JEM_functions import isnumeric
 
 metafile="R:\\DA_and_Reward\\gc214\\IPP1\\IPP1_metafile.txt"
 medfolder="R:\\DA_and_Reward\\gc214\\IPP1\\MED-PC datafile\\"
@@ -48,31 +48,33 @@ for l in Licks:
 RLicks = []
 for l in Licks:
     RLicks.append(len(l[1]))
+
+#lists of licks 
     
 test1_C_NR = []
 test1_M_NR = []
 test1_C_PR = []
 test1_M_PR = []
 
-#test2_C_NR = []
-#test2_M_NR = []
-#test2_C_PR = []
-#test2_M_PR = []
+test2_C_NR = []
+test2_M_NR = []
+test2_C_PR = []
+test2_M_PR = []
 
-#test3_C_NR = []
-#test3_M_NR = []
-#test3_C_PR = []
-#test3_M_PR = []
+test3_C_NR = []
+test3_M_NR = []
+test3_C_PR = []
+test3_M_PR = []
 
-#test4_C_NR = []
-#test4_M_NR = []
-#test4_C_PR = []
-#test4_M_PR = []
+test4_C_NR = []
+test4_M_NR = []
+test4_C_PR = []
+test4_M_PR = []
 
-#test5_C_NR = []
-#test5_M_NR = []
-#test5_C_PR = []
-#test5_M_PR = []
+test5_C_NR = []
+test5_M_NR = []
+test5_C_PR = []
+test5_M_PR = []
 
 for rat in np.unique(Data['Rat']): #create a list of the rats in numerical order
     for index, session in enumerate(Data['Session']): #index the position in the Session list
@@ -97,6 +99,164 @@ for rat in np.unique(Data['Rat']): #create a list of the rats in numerical order
                     if 'malto' in Data ['bottleR'][index]:
                         test1_M_PR.append(RLicks[index])
     
+        if session == 's5' :
+            if Data['Rat'][index] == rat:
+                if 'NR' in Data['Diet'][index]:
+                    if 'cas' in Data ['bottleL'][index]:
+                        test2_C_NR.append(LLicks[index])
+                    if 'cas' in Data ['bottleR'][index]:
+                        test2_C_NR.append(RLicks[index])
+                    if 'malto' in Data['bottleL'][index]:
+                        test2_M_NR.append(LLicks[index])
+                    if 'malto' in Data ['bottleR'][index]:
+                        test2_M_NR.append(RLicks[index])
+                if 'PR' in Data['Diet'][index]:
+                    if 'cas' in Data['bottleL'][index]:
+                        test2_C_PR.append(LLicks[index])
+                    if 'cas' in Data['bottleR'][index]:
+                        test2_C_PR.append(RLicks[index])
+                    if 'malto' in Data['bottleL'][index]:
+                        test2_M_PR.append(LLicks[index])
+                    if 'malto' in Data ['bottleR'][index]:
+                        test2_M_PR.append(RLicks[index])
+                            
+        if session == 's6' :
+            if Data['Rat'][index] == rat:
+                if 'NR' in Data['Diet'][index]:
+                    if 'cas' in Data ['bottleL'][index]:
+                        test3_C_NR.append(LLicks[index])
+                    if 'cas' in Data ['bottleR'][index]:
+                        test3_C_NR.append(RLicks[index])
+                    if 'malto' in Data['bottleL'][index]:
+                        test3_M_NR.append(LLicks[index])
+                    if 'malto' in Data ['bottleR'][index]:
+                        test3_M_NR.append(RLicks[index])
+                if 'PR' in Data['Diet'][index]:
+                    if 'cas' in Data['bottleL'][index]:
+                        test3_C_PR.append(LLicks[index])
+                    if 'cas' in Data['bottleR'][index]:
+                        test3_C_PR.append(RLicks[index])
+                    if 'malto' in Data['bottleL'][index]:
+                        test3_M_PR.append(LLicks[index])
+                    if 'malto' in Data ['bottleR'][index]:
+                        test3_M_PR.append(RLicks[index]) 
+               
+        if session == 's7' :
+            if Data['Rat'][index] == rat:
+                if 'NR' in Data['Diet'][index]:
+                    if 'cas' in Data ['bottleL'][index]:
+                        test4_C_NR.append(LLicks[index])
+                    if 'cas' in Data ['bottleR'][index]:
+                        test4_C_NR.append(RLicks[index])
+                    if 'malto' in Data['bottleL'][index]:
+                        test4_M_NR.append(LLicks[index])
+                    if 'malto' in Data ['bottleR'][index]:
+                        test4_M_NR.append(RLicks[index])
+                if 'PR' in Data['Diet'][index]:
+                    if 'cas' in Data['bottleL'][index]:
+                        test4_C_PR.append(LLicks[index])
+                    if 'cas' in Data['bottleR'][index]:
+                        test4_C_PR.append(RLicks[index])
+                    if 'malto' in Data['bottleL'][index]:
+                        test4_M_PR.append(LLicks[index])
+                    if 'malto' in Data ['bottleR'][index]:
+                        test4_M_PR.append(RLicks[index]) 
+        
+        if session == 's8':
+            if Data['Rat'][index] == rat:
+                if 'NR' in Data['Diet'][index]:
+                    if 'cas' in Data ['bottleL'][index]:
+                        test5_C_NR.append(LLicks[index])
+                    if 'cas' in Data ['bottleR'][index]:
+                        test5_C_NR.append(RLicks[index])
+                    if 'malto' in Data['bottleL'][index]:
+                        test5_M_NR.append(LLicks[index])
+                    if 'malto' in Data ['bottleR'][index]:
+                        test5_M_NR.append(RLicks[index])
+                if 'PR' in Data['Diet'][index]:
+                    if 'cas' in Data['bottleL'][index]:
+                        test5_C_PR.append(LLicks[index])
+                    if 'cas' in Data['bottleR'][index]:
+                        test5_C_PR.append(RLicks[index])
+                    if 'malto' in Data['bottleL'][index]:
+                        test5_M_PR.append(LLicks[index])
+                    if 'malto' in Data ['bottleR'][index]:
+                        test5_M_PR.append(RLicks[index]) 
+            
+# averages
+                        
+av_test1_C_NR = np.mean(test1_C_NR)
+av_test1_M_NR = np.mean(test1_M_NR)
+av_test1_C_PR = np.mean(test1_C_PR)
+av_test1_M_PR = np.mean(test1_M_PR)
+
+av_test2_C_NR = np.mean(test2_C_NR)
+av_test2_M_NR = np.mean(test2_M_NR)
+av_test2_C_PR = np.mean(test2_C_PR)
+av_test2_M_PR = np.mean(test2_M_PR)
+
+av_test3_C_NR = np.mean(test3_C_NR)
+av_test3_M_NR = np.mean(test3_M_NR)
+av_test3_C_PR = np.mean(test3_C_PR)
+av_test3_M_PR = np.mean(test3_M_PR)
+
+av_test4_C_NR = np.mean(test4_C_NR)
+av_test4_M_NR = np.mean(test4_M_NR)
+av_test4_C_PR = np.mean(test4_C_PR)
+av_test4_M_PR = np.mean(test4_M_PR)
+
+av_test5_C_NR = np.mean(test5_C_NR)
+av_test5_M_NR = np.mean(test5_M_NR)
+av_test5_C_PR = np.mean(test5_C_PR)
+av_test5_M_PR = np.mean(test5_M_PR)
+
+# figures
+
+import matplotlib.pyplot as plt
+
+width = 0.9    
+xvals = [0.5, 1.5, 2.75, 3.75]
+
+fig, ax = plt.subplots(figsize=(4, 3))
+fig.set_size_inches((3, 2.5))
+ax.spines['top'].set_visible(False)
+ax.spines['right'].set_visible(False)
+ax.spines['left'].set_visible(True)
+ax.spines['bottom'].set_visible(True)
+
+ax.set_ylabel('Licks', fontsize=10)
+ax.set_xticks([1, 3.25])
+ax.set_xticklabels(('NR', 'PR'), fontsize=10)
+ax.set_ylim(0)
+
+bar1 = ax.bar(xvals[0], av_test1_C_NR, width, color='xkcd:silver',  
+            align='center', label='casein', edgecolor='black', alpha=1, zorder=-1)
+bar2 = ax.bar(xvals[1], av_test1_M_NR, width, color='white',
+           align='center', label='malto', edgecolor='black', alpha=1, zorder=-1)
+bar3 = ax.bar(xvals[2], av_test1_C_PR, width, color='xkcd:kelly green',
+           align='center', label='casein', edgecolor='black', alpha=1, zorder=-1)
+bar4 = ax.bar(xvals[3], av_test1_M_PR, width, color='lightgreen',
+           align='center', label='malto', edgecolor='black', alpha=1, zorder=-1)
+
+ax.set_yticks([ 2000, 4000,  6000])
+plt.tick_params(labelsize=10)
+
+for y1,y2 in zip(test1_C_NR, test1_M_NR):
+    ax.plot([xvals[0], xvals[1]],[y1,y2], c='k', marker='o',markerfacecolor='w', color= 'grey', markeredgecolor='black', markersize=8, zorder=20, alpha=1, clip_on=False)
+    
+for y1,y2 in zip(test1_C_PR, test1_M_PR):
+    ax.plot([xvals[2], xvals[3]],[y1,y2],c='k', marker='o',markerfacecolor='w', color= 'grey', markeredgecolor='black', markersize=8, zorder=20, alpha=1, clip_on=False)
+
+leg1 = ax.legend([bar1,bar2, bar3, bar4],['Cas.','Malto.', 'Cas.','Malto.'], loc=(0.02, 0.55),  fontsize=9)
+
+plt.tight_layout()
+#plt.savefig('IPP test1.eps', format='eps', dpi=600)
+plt.show()
+
+
+
+                        
+     
                         
 
 
